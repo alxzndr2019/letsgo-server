@@ -8,14 +8,6 @@ const createUserAccount = async (req: Request, res: Response): Promise<any> => {
   const { name, email, password, passwordVerify } = req.body;
 
   try {
-    if (!email || !password || !passwordVerify)
-      return res.status(401).json({ error: "Email and Password are required" });
-    if (password.length < 5)
-      return res
-        .status(401)
-        .json({ error: "Password must be at least 5 characters" });
-    if (password !== passwordVerify)
-      return res.status(401).json({ error: "Passwords do not match" });
     const existingUser = await User.findOne({ email });
     if (existingUser)
       return res
