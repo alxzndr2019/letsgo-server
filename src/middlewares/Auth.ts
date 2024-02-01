@@ -1,6 +1,6 @@
-import jwt from "jsonwebtoken";
 import { Request, Response, NextFunction } from "express";
-
+const passport = require("passport");
+const jwt = require("jsonwebtoken");
 const jwtSecret = process.env.APP_SECRET;
 
 export const adminAuth = (
@@ -51,10 +51,6 @@ export const userAuth = (
       if (err) {
         return res.status(401).json({ message: "Not authorized" });
       }
-      // if (decodedToken.userType !== "user") {
-      //   return res.status(401).json({ message: "Not authorized" });
-      // }
-
       next();
     });
   } else {
