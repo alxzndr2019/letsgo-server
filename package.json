@@ -4,7 +4,7 @@
   "description": "server",
   "main": "server.js",
   "scripts": {
-    "build": "npx tsc",
+    "build": "npm install && tsc",
     "start": "node dist/src/server.js",
     "dev": "nodemon src/server.ts"
   },
